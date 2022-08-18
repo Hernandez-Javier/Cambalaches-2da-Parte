@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+:root {
+    --btn-color: #0088a9;
+    --btn-color-hover: #0055a9;
+    --color-header: rgb(0, 0, 0);
+}
+
+* {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 255, 255);
+    color: #606060;
+}
+
+li, p {
+    font-weight: 500;
+    font-size: 12px;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    font-size: 11px;
+    color: #c95555
+}
+
+button {
+    font-size: 11px;
+}
+
+h1 {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 14px;
+}
+
+h4 {
+    text-align: center;
+    font-size: 14px;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 10%;
+    background-color: var(--color-header);
+    height: 35px;
+}
+
+.nav_menu {
+    list-style: none;
+    background-color:var(--color-header);
+}
+
+.nav_menu li {
+    list-style: none;
+    display: inline-block;
+    padding: 0px 20px;
+    background-color: var(--color-header);
+}
+
+.nav_menu li a {
+    background-color: var(--color-header);
+}
+
+.nav_menu li a:hover {
+    color: var(--btn-color-hover);
+}
+
+.micar_button {
+    padding: 9px 25px ;
+    border: none;
+    border-radius: 50px;
+    margin: 30px;
+    cursor: pointer;
+    background-color: var(--btn-color);
+    color: aliceblue;
+    width: 120px;
+}
+
+button:not(.search_btn):not(.micar_button):hover{
+    background-color: var(--btn-color-hover);
+}
+
+.titulo {
+    height: 200px;
+    box-shadow: 10px 24px 5px -24px black;
+}
+
+.search_field {
+    color: aliceblue;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+    font-family: "Montserrat", sans-serif;
+    width: 400px;
+}
+
+.search_btn {
+    padding: 9px 25px ;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--btn-color);
+    position: absolute;
+    top: 26.5%;
+    left: 64%;
+}
+
+.categories{
+    display: flex;
+    justify-content: center;
+}
+
+.categories li {
+    list-style: none;
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.ult_camb {
+    margin-top: 110px;
+    margin-bottom: 60px;
+    border-bottom: 30px;
+}
+
+.end {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    height: 20px;
+}
+
+.end li {
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top:3px;
+    border-right: 2.5px solid rgb(116, 114, 114);
+}
+
+.line {
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 2px solid rgb(130, 130, 130);
+    margin-top: 15px;
+    width: 300px;
+}
+
+.input_login {
+    width: 32%;
+    height: 40px;
+    margin: 45px;
+}
+
+.input_register {
+    width: 20%;
+    height: 40px;
+    margin: 5px;
+    margin-top: 20px;
+}
+
+.div_inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.div_register {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.direction {
+    width: 41%;
+    height: 40px;
+    margin: 10px;
+    margin-top: 20px;
+}
+
+.dash_product {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    margin-left: 10px;
+}/*style for dashboard items (title, user)*/
+
+.dash_li {
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 2px solid rgb(134, 0, 0);
+}/*to put buttons beside image in dashboard*/
+
+.text_dash {
+    color: rgb(59, 59, 252)
+}/*style for items names*/
+
+.big_txt {
+    margin: 5px;
+    margin-top: 20px;
+    resize: none;
+    border: 2px solid black;
+}/*style for large text areas in new/edit product*/
+
+.user_name {
+    text-align: start;
+    margin-top: 15px;
+    box-shadow: 10px 24px 5px -24px black
+}/*styles for user names in cambalaches page*/

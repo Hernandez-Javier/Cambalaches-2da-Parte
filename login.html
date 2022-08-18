@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cambalaches</title>
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            .head {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            .he {
+                display: flex;
+                position: absolute;
+                bottom: 2px;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <img src="images/icon.png" width="50" height="50" style="margin-right: auto; background-color: var(--color-header);" alt=""/>
+            <nav>
+                <ul class="nav_menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cambalache.html">Cambalaches</a></li>
+                    <li><a href="login.html">Ingresar</a></li>
+                </ul>
+            </nav>
+            <button class="micar_button" onclick="location.href='dashboard.html'"><img src="images/car.png" width="15" height="15" style="background-color:var(--btn-color); float:left" alt=""/>Mi carrito</button>
+        </header>
+
+        <div>
+            <h1 style="text-align: center; margin-top: 50px; font-weight: bold">Ingreso de Usuarios</h1>
+            <div class="line"></div>
+        </div>
+
+        <div class="div_inputs">
+            <input id="email" class="input_login" type="text" placeholder="Correo Electrónico">
+            <input id="pass" class="input_login" type="text" placeholder="Contraseña">
+            <div class="line" style="width: 500px"></div>
+            <h4 style="font-size: 11px; margin-top: 20px;">Si no tienes una cuenta de usuario <a href="register.html">registrate aquí</a></h4>
+        </div>
+
+        <div class="categories" style="margin-top: 30px;">
+            <button class="micar_button" onclick="login();">Ingresar</button>
+            <button class="micar_button" style="background-color: #c7eef8; color: rgb(3, 3, 3)">Cancelar</button>
+        </div>
+        <hr/>
+
+        <div style="height: 20px;"></div>
+        <footer style="text-align: center;">
+            <ul class="end">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="cambalache.html">Cambalaches</a></li>
+                <li style="border-right: none"><a href="login.html">Ingresar</a></li>
+            </ul>
+            <div class="end" style="margin-top: 25px; margin-bottom: 25px;">
+                <img src="images/icon_foot.png" width="25" height="20" alt=""/>
+                <h4 style="margin-top: 3px;">Cambalaches.net</h4>
+            </div>
+        </footer>
+        <script src="./app.js" type="text/javascript"></script>
+    </body>
+</html>

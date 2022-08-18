@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cambalaches</title>
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            .head {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            .he {
+                display: flex;
+                position: absolute;
+                bottom: 2px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <img src="images/icon.png" width="50" height="50" style="margin-right: auto; background-color: var(--color-header);" alt=""/>
+            <nav>
+                <ul class="nav_menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cambalache.html">Cambalaches</a></li>
+                    <li><a href="login.html">Ingresar</a></li>
+                </ul>
+            </nav>
+            <button class="micar_button" onclick="location.href='dashboard.html'"><img src="images/car.png" width="15" height="15" style="background-color:var(--btn-color); float:left" alt=""/>Mi carrito</button>
+        </header>
+        
+        <div class="titulo">
+            <h1 style="text-align: center; margin-top: 50px; font-weight: bold">Inicia tu cambalache</h1>
+            <div class="line"></div>
+            <input class="search_field" type="text" placeholder="Search..">
+            <button class="search_btn"><img class="search_img" src="images/search.png" width="25" height="25" style="background-color:var(--btn-color);" alt=""/></button>
+        </div>
+
+        <div style="margin-top: 50px; margin-bottom: 50px;">
+            <h2 style="text-align: center; font-weight: bold;">Categorías</h2><br/>
+            <p style="text-align: center; margin-bottom: 50px;">Quizás encuentras algo que te guste</p>
+            <ul class="categories">
+                <li>
+                    <img src="images/electr.jpg" width="150" height="150" alt=""/>
+                    <h4>Electrodomesticos</h4>
+                </li>
+                <li>
+                    <img src="images/vehiculo.jpg" width="150" height="150" alt=""/>
+                    <h4>Vehículos</h4>
+                </li>
+                <li>
+                    <img src="images/entretenimiento.jpg" width="150" height="150" alt=""/>
+                    <h4>Entretenimiento</h4>
+                </li>
+                <li>
+                    <img src="images/consolas.jpg" width="150" height="150" alt=""/>
+                    <h4>Consolas</h4>
+                </li>
+                <li>
+                    <img src="images/mueble.jpg" width="150" height="150" alt=""/>
+                    <h4>Hogar</h4>
+                </li>
+            </ul>
+        </div>
+
+        <div class="ult_camb">
+            <h2 style="text-align: center; font-weight: bold;">Cambalaches Recientes</h2><br/>
+            <ul class="categories">
+                <li>
+                    <img src="images/camba1.jpg" width="350" height="250" alt=""/>
+                    <a class="pro_index" href="products.html"><h4 style="color: #c95555">PS4 usado por Maradona</h4></a>
+                </li>
+                <li>
+                    <img src="images/camba2.jpg" width="350" height="250" alt=""/>
+                    <a class="pro_index" href="products.html"><h4 style="color: #c95555">TV para ver tele</h4></a>
+                </li>
+            </ul>
+        </div>
+        <hr/>
+
+        <div style="height: 20px;"></div>
+        <footer style="text-align: center;">
+            <ul class="end">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="cambalache.html">Cambalaches</a></li>
+                <li style="border-right: none"><a href="login.html">Ingresar</a></li>
+            </ul>
+            <div class="end" style="margin-top: 25px; margin-bottom: 25px;">
+                <img src="images/icon_foot.png" width="25" height="20" alt=""/>
+                <h4 style="margin-top: 3px;">Cambalaches.net</h4>
+            </div>
+        </footer>
+    </body>
+</html>
