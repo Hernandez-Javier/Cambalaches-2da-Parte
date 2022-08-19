@@ -18,9 +18,10 @@
                 bottom: 2px;
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 
-    <body>
+    <body onload="charge_all_products();">
         <header>
             <img src="images/icon.png" width="50" height="50" style="margin-right: auto; background-color: var(--color-header);" alt=""/>
             <nav>
@@ -43,109 +44,7 @@
 
         <div class="ult_camb">
             <ul class="categories" style="margin-bottom: 70px">
-                <li>
-                    <div class="dash_li">
-                        <div class="dash_product">
-                            <img src="images/retrato.jpg" width="200" height="200" alt=""/>
-                        </div>
-                        <div class="dash_product">
-                            <a href="products.html">Retrato de mi abuela</a>
-                            <h6 class="user_name">Usuario: Juanito Arcoiris</h6>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="dash_li">
-                        <div class="dash_product">
-                            <img src="images/celular.jpg" width="200" height="200" alt=""/>
-                        </div>
-                        <div class="dash_product">
-                            <a href="products.html">Celular casi nuevo</a>
-                            <h6 class="user_name">Usuario: Elsa Pato</h6>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="dash_li">
-                        <div class="dash_product">
-                            <img src="images/tenis.jpg" width="200" height="200" alt=""/>
-                        </div>
-                        <div class="dash_product">
-                            <a href="products.html">Tenis usadas por el papa</a>
-                            <h6 class="user_name">Usuario: Javier Hernandez                                                                                                      </h6>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <ul class="categories" style="margin-bottom: 70px">
-                <li>
-                    <div class="dash_li">
-                        <div class="dash_product">
-                            <img src="images/camba1.jpg" width="200" height="200" alt=""/>
-                        </div>
-                        <div class="dash_product">
-                            <a href="products.html">PS4 usado por Maradona</a>
-                            <h6 class="user_name">Usuario: Javier Hernandez</h6>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="dash_li">
-                        <div class="dash_product">
-                            <img src="images/camba2.jpg" width="200" height="200" alt=""/>
-                        </div>
-                        <div class="dash_product">
-                            <a href="products.html">TV para ver tele</a>
-                            <h6 class="user_name">Usuario: Javier Hernandez</h6>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="dash_li">
-                        <div class="dash_product">
-                            <img src="images/camba3.jpg" width="200" height="200" alt=""/>
-                        </div>
-                        <div class="dash_product">
-                            <a href="products.html">Auto usado, desconozco el modelo</a>
-                            <h6 class="user_name">Usuario: Nombre Random</h6>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <ul class="categories" style="margin-bottom: 70px">
-                <li>
-                    <div class="dash_li">
-                        <div class="dash_product">
-                            <img src="images/ruedas.jpg" width="200" height="200" alt=""/>
-                        </div>
-                        <div class="dash_product">
-                            <a href="products.html">Ruedas redondas para avion</a>
-                            <h6 class="user_name">Usuario: Leo Diario</h6>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="dash_li">
-                        <div class="dash_product">
-                            <img src="images/sillon.jpg" width="200" height="200" alt=""/>
-                        </div>
-                        <div class="dash_product">
-                            <a href="products.html">Sillones para sentarse</a>
-                            <h6 class="user_name">Usuario: Gumball Perez</h6>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="dash_li">
-                        <div class="dash_product">
-                            <img src="images/papa.jpg" width="200" height="200" alt=""/>
-                        </div>
-                        <div class="dash_product">
-                            <a href="products.html">Papa de la 2da guerra mundial</a>
-                            <h6 class="user_name">Usuario: Sargento Godines</h6>
-                        </div>
-                    </div>
-                </li>
+                
             </ul>
         </div>
         <hr/>
@@ -162,5 +61,6 @@
                 <h4 style="margin-top: 3px;">Cambalaches.net</h4>
             </div>
         </footer>
+        <script src="./app.js" type="text/javascript"></script>
     </body>
 </html>

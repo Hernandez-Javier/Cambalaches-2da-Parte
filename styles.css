@@ -90,6 +90,17 @@ header {
     width: 120px;
 }
 
+.micar_button_delete {
+    padding: 9px 25px ;
+    border: none;
+    border-radius: 50px;
+    margin: 30px;
+    cursor: pointer;
+    background-color: rgb(184, 1, 1);
+    color: aliceblue;
+    width: 120px;
+}/*new style for delete btn, created in part2*/
+
 button:not(.search_btn):not(.micar_button):hover{
     background-color: var(--btn-color-hover);
 }
@@ -126,16 +137,18 @@ button:not(.search_btn):not(.micar_button):hover{
 
 .categories{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .categories li {
     list-style: none;
     display: inline-block;
-    padding: 0px 20px;
+    padding: 20px 20px;
 }
 
 .ult_camb {
+    flex-wrap: wrap;
     margin-top: 110px;
     margin-bottom: 60px;
     border-bottom: 30px;
@@ -228,3 +241,13 @@ button:not(.search_btn):not(.micar_button):hover{
     margin-top: 15px;
     box-shadow: 10px 24px 5px -24px black
 }/*styles for user names in cambalaches page*/
+
+.img_style {
+    height: 200px;
+    width: 200px;
+    alt: "";
+}/*style for images in dashboard*/
+
+.center_text {
+    text-align: center;
+}
