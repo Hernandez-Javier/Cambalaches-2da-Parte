@@ -141,6 +141,12 @@ button:not(.search_btn):not(.micar_button):hover{
     justify-content: center;
 }
 
+.dashboard_items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .categories li {
     list-style: none;
     display: inline-block;

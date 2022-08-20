@@ -1,3 +1,24 @@
+const container = document.querySelector('.categories');
+const container_dash = document.querySelector('.dashboard_items');
+(()=>{
+  if (container_dash) {
+    container_dash.addEventListener('click', delegate);
+  }
+  if (container) {
+    container.addEventListener('click', delegate);
+  }
+})();
+
+function delegate(e) {
+  let productsDb = JSON.parse(localStorage.getItem('products'));
+  e.preventDefault();
+  localStorage.setItem('view_product', JSON.stringify(productsDb.find(item => item.id == e.target.id)));
+  let test = JSON.parse(localStorage.getItem('view_product'));
+  if (test != null) {
+    window.location.href = './products.html';
+  }
+}
+
 function addUser(){
   const Name = $('#name').val();
   const Lastname = $('#last_name').val();
@@ -93,8 +114,8 @@ function charge_all_products() {
     let name = document.createElement("h6");
     img.src = productsDb[i].image;
     a.textContent = productsDb[i].name;
+    a.setAttribute('id', productsDb[i].id);
     name.textContent = "Usuario: "+usersDb.find(item => item.id == productsDb[i].owner).name;
-    a.href = "./products.html";
 
     new_div3.appendChild(img);
     new_div4.appendChild(a);
@@ -130,8 +151,10 @@ function charge_products() {
       bt.textContent = "Editar";
       bt2.textContent = "Eliminar";
       a.textContent = productsDb[i].name;
-      a.href = "./products.html";
-      bt.addEventListener('click', go_edit_product);
+      a.setAttribute('id', productsDb[i].id);
+      bt.setAttribute('id', productsDb[i].id);
+      //bt.addEventListener('click', go_edit_product.pass(bt.id));
+      bt.addEventListener('click', localStorage.setItem('product_edit', JSON.stringify(productsDb.find(item => item.id == bt.id))));
       //bt2.addEventListener('click', delete_product.bind(productsDb[i].id);
   
       new_div3.appendChild(img);
@@ -148,12 +171,12 @@ function charge_products() {
       bt.classList.add("micar_button");
       bt2.classList.add("micar_button_delete");
       a.classList.add("center_text");
-      $('.categories').prepend(new_li);
+      $('.dashboard_items').prepend(new_li);
     }
   }
 }
 
-function go_edit_product() {
+function go_edit_product(id) {
   window.location.href = './edit_product.html';
 }
 
@@ -164,6 +187,30 @@ function delete_product(id) {
     productsDb.splice(index, 1);
   }
   localStorage.setItem('products', JSON.stringify(productsDb));
+}
+
+function view_product() {
+  let usersDb = JSON.parse(localStorage.getItem('users'));
+  let product = JSON.parse(localStorage.getItem('view_product'));
+  document.getElementById("imagep").src = product.image;
+  document.getElementById("title").textContent = product.name;
+  document.getElementById("owner").textContent= usersDb.find(item => item.id == product.owner).name;
+  document.getElementById("description").textContent = product.description;
+  document.getElementById("lf").textContent = product.lf;
+
+
+  let new_div = document.createElement("div");
+  let new_div2 = document.createElement("div");
+  let img = document.createElement("img");
+  let bt = document.createElement("button");
+  let new_h1 = document.createElement("h1");
+  let new_h6 = document.createElement("h6");
+  let new_div3 = document.createElement("div");
+  let new_h2 = document.createElement("h2");
+  let new_p = document.createElement("p");
+  let new_h2_2 = document.createElement("h2");
+  let new_p2 = document.createElement("p");
+  let new_div4 = document.createElement("div");
 }
 
 function loged() {
