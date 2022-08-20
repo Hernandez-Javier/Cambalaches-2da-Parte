@@ -90,6 +90,17 @@ header {
     width: 120px;
 }
 
+.edit_button {
+    padding: 9px 25px ;
+    border: none;
+    border-radius: 50px;
+    margin: 30px;
+    cursor: pointer;
+    background-color: var(--btn-color);
+    color: aliceblue;
+    width: 120px;
+}/**new style for edit btn, made to avoid errors**/
+
 .micar_button_delete {
     padding: 9px 25px ;
     border: none;
