@@ -21,7 +21,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 
-    <body onload="check_loged(), edit_product()">
+    <body onload="check_loged(), edit_product(), load_categories()">
         <header>
             <img src="images/icon.png" width="50" height="50" style="margin-right: auto; background-color: var(--color-header);" alt=""/>
             <nav>
@@ -43,6 +43,7 @@
         <div>
             <div class="div_inputs" style="margin-top: 10px">
                 <input id="name" class="input_register" style="align-self: flex-start; margin-left: 447px;" type="text" maxlength="200" placeholder="Nombre del producto">
+                <select id="categories-list" class="input_register" style="align-self: flex-start; margin-left: 447px;"></select>
                 <textarea id="description" class="big_txt" cols="95" rows="10" placeholder="Descripción" maxlength="300"></textarea>
                 <input id="image" class="direction" type="url" placeholder="Link de la imagen">
                 <textarea id="lf" class="big_txt" cols="95" rows="10" placeholder="Busco" maxlength="300"></textarea>

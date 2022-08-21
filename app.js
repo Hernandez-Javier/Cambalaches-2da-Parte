@@ -1,6 +1,8 @@
-const container = document.querySelector('.categories');
-const container_dash = document.querySelector('.dashboard_items');
-const container_categories = document.querySelector('.dashboard_categries');
+const container = document.querySelector('.categories');//cambalaches
+const container_dash = document.querySelector('.dashboard_items');//products in dashboard
+const container_categories = document.querySelector('.dashboard_categories');//categories in dashboard
+const container_categories_index = document.querySelector('.categories_index');//categories in index
+const container_last_products = document.querySelector('.last_products');//last products in index
 (()=>{
   if (container_dash) {
     container_dash.addEventListener('click', delegate);
@@ -11,17 +13,31 @@ const container_categories = document.querySelector('.dashboard_categries');
   if (container_categories) {
     container_categories.addEventListener('click', delegate);
   }
+  if (container_categories_index) {
+    container_categories_index.addEventListener('click', delegate);
+  }
+  if (container_last_products) {
+    container_last_products.addEventListener('click', delegate);
+  }
 })();
 
 function delegate(e) {
   let productsDb = JSON.parse(localStorage.getItem('products'));
+  let categories = JSON.parse(localStorage.getItem('categories'));
   e.preventDefault();
-
+  console.log('ygyggygggygygyg');
   if (e.target.classList[0] == 'edit_button') {
     localStorage.setItem('product_edit', JSON.stringify(productsDb.find(item => item.id == e.target.id)));
     window.location.href = './new_product.html';
   }else if (e.target.classList[0] == 'micar_button_delete'){
     delete_product(e.target.id);
+  }else if (e.target.classList[0] == 'center_text_cat'){
+    localStorage.setItem('category_used', JSON.stringify(e.target.textContent));
+    window.location.href = './cambalache.html';
+  }else if (e.target.classList[0] == 'edit_button_cat'){
+    console.log('aber');
+    localStorage.setItem('category_edit', JSON.stringify(categories.find(item => item.id == e.target.id)));
+    window.location.href = './new_category.html';
   }else{
     localStorage.setItem('view_product', JSON.stringify(productsDb.find(item => item.id == e.target.id)));
     let test = JSON.parse(localStorage.getItem('view_product'));
@@ -182,6 +198,8 @@ function new_product() {
   let productsDb = JSON.parse(localStorage.getItem('products'));
   let product_edit = JSON.parse(localStorage.getItem('product_edit'));
 
+  let cate = $('#categories-list :selected').text();
+
   if (product_edit != null) {
     //let edited = productsDb.find(item => item.id == product_edit.id);
     let index = productsDb.findIndex(item => item.id == product_edit.id);
@@ -189,6 +207,7 @@ function new_product() {
     productsDb[index].description = $('#description').val();
     productsDb[index].image = $('#image').val();
     productsDb[index].lf = $('#lf').val();
+    productsDb[index].category = cate;
     localStorage.setItem('products', JSON.stringify(productsDb));
     window.localStorage.removeItem('product_edit');
     window.location.href = './dashboard.html';
@@ -216,6 +235,7 @@ function new_product() {
     image: Image,
     lf: LF,
     owner: Owner,
+    category: cate,
     id: id_count + 1
   }
 
@@ -229,6 +249,41 @@ function new_product() {
 function charge_all_products() {
   let productsDb = JSON.parse(localStorage.getItem('products'));
   let usersDb = JSON.parse(localStorage.getItem('users'));
+  let cat = JSON.parse(localStorage.getItem('category_used'));
+
+  if (cat != null) {
+    for (let i=0; i<productsDb.length; i++) {
+      if (productsDb[i].category == cat) {
+        let new_li = document.createElement("li");
+        let new_div2 = document.createElement("div");
+        let new_div3 = document.createElement("div");
+        let new_div4 = document.createElement("div");
+        let img = document.createElement("img");
+        let a = document.createElement("a");
+        let name = document.createElement("h6");
+        img.src = productsDb[i].image;
+        a.textContent = productsDb[i].name;
+        a.setAttribute('id', productsDb[i].id);
+        name.textContent = "Usuario: "+usersDb.find(item => item.id == productsDb[i].owner).name;
+    
+        new_div3.appendChild(img);
+        new_div4.appendChild(a);
+        new_div4.appendChild(name);
+        new_div2.appendChild(new_div3);
+        new_div2.appendChild(new_div4);
+        new_li.appendChild(new_div2);
+        new_div3.classList.add("dash_product");
+        new_div4.classList.add("dash_product");
+        new_div2.classList.add("dash_li");
+        img.classList.add("img_style");
+        a.classList.add("center_text");
+        name.classList.add("user_name");
+        $('.categories').prepend(new_li);
+      }
+    }
+    window.localStorage.removeItem('category_used');
+    return false;
+  }
 
   for (let i=0; i<productsDb.length; i++) {
     let new_li = document.createElement("li");
@@ -301,7 +356,6 @@ function charge_products() {
 }
 
 function charge_all_categories() {
-  let loged = JSON.parse(localStorage.getItem('user_loged'));
   let categoriesDb = JSON.parse(localStorage.getItem('categories'));
 
   for (let i=0; i<categoriesDb.length; i++) {
@@ -311,11 +365,12 @@ function charge_all_categories() {
     img.src = categoriesDb[i].image;
     new_h4.textContent = categoriesDb[i].name;
     new_h4.setAttribute('id', categoriesDb[i].id);
+    new_h4.setAttribute('name', 'categ');
 
     new_li.appendChild(img);
     new_li.appendChild(new_h4);
     img.classList.add("img_categories");
-    new_h4.classList.add("center_text");
+    new_h4.classList.add("center_text_cat");
     $('.categories').prepend(new_li);
   }
 }
@@ -340,7 +395,7 @@ function charge_categories() {
       new_li.appendChild(new_h4);
       new_li.appendChild(bt);
       img.classList.add("img_categories");
-      bt.classList.add("edit_button");
+      bt.classList.add("edit_button_cat");
       new_h4.classList.add("center_text");
       $('.dashboard_categories').prepend(new_li);
     }
@@ -387,12 +442,6 @@ function view_product() {
   document.getElementById("lf").textContent = product.lf;
 }
 
-function loged() {
-    let loged = JSON.parse(localStorage.getItem('user_loged'));
-    document.getElementById('text123').value = loged;
-    return loged.name;
-}
-
 function logout(link) {
   window.localStorage.removeItem('user_loged');
   window.location.href = link;
@@ -405,12 +454,3 @@ function check_loged() {
     document.getElementById('my_dashboard_btn').style.visibility = 'hidden';
   }
 }
-
-// function delete1 (){
-//   let loged = JSON.parse(localStorage.getItem('users'));
-//   const index = loged.findIndex(item => item.name == "pepe");
-
-//   loged.splice(index, 1);
-//   localStorage.setItem('users', JSON.stringify(loged));
-//   window.localStorage.removeItem('user_loged');
-// }
