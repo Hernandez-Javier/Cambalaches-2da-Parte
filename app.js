@@ -32,6 +32,11 @@ function delegate(e) {
 }
 
 function addUser(){
+  let loged = JSON.parse(localStorage.getItem('user_loged'))
+  if (loged) {
+    window.localStorage.removeItem('user_loged');
+  }
+
   const Name = $('#name').val();
   const Lastname = $('#last_name').val();
   const Direction = $('#direction').val();
@@ -45,6 +50,13 @@ function addUser(){
   let usersDb = JSON.parse(localStorage.getItem('users'));
   if(!usersDb) {
     usersDb = [];
+  }
+
+  for (let i=0; i<usersDb.length; i++) {
+    if (usersDb[i].email == Email) {
+      alert("Ese correo eectrónico ya se encuentra registrado");
+      return false;
+    }
   }
 
   let Country = $('#country :selected').text();
@@ -62,6 +74,7 @@ function addUser(){
   }
   usersDb.push(user);
   localStorage.setItem('users', JSON.stringify(usersDb));
+  localStorage.setItem('user_loged', JSON.stringify(user));
   window.location.href = 'dashboard.html';
 }
 
@@ -71,6 +84,11 @@ function login() {
 
   let usersDb = JSON.parse(localStorage.getItem('users'));
   let loged = 0;
+
+  if (!usersDb) {
+    alert("Los datos ingresados son incorrectos");
+    return false;
+  }
 
   for (let i=0; i<usersDb.length; i++) {
       if (Email == usersDb[i].email && Pass == usersDb[i].pass) {
@@ -287,20 +305,18 @@ function charge_all_categories() {
   let categoriesDb = JSON.parse(localStorage.getItem('categories'));
 
   for (let i=0; i<categoriesDb.length; i++) {
-    if (categoriesDb[i].owner == loged.id){
-      let new_li = document.createElement("li");
-      let new_h4 = document.createElement("h4");
-      let img = document.createElement("img");
-      img.src = categoriesDb[i].image;
-      new_h4.textContent = categoriesDb[i].name;
-      new_h4.setAttribute('id', categoriesDb[i].id);
-  
-      new_li.appendChild(img);
-      new_li.appendChild(new_h4);
-      img.classList.add("img_categories");
-      new_h4.classList.add("center_text");
-      $('.categories').prepend(new_li);
-    }
+    let new_li = document.createElement("li");
+    let new_h4 = document.createElement("h4");
+    let img = document.createElement("img");
+    img.src = categoriesDb[i].image;
+    new_h4.textContent = categoriesDb[i].name;
+    new_h4.setAttribute('id', categoriesDb[i].id);
+
+    new_li.appendChild(img);
+    new_li.appendChild(new_h4);
+    img.classList.add("img_categories");
+    new_h4.classList.add("center_text");
+    $('.categories').prepend(new_li);
   }
 }
 
@@ -376,3 +392,25 @@ function loged() {
     document.getElementById('text123').value = loged;
     return loged.name;
 }
+
+function logout(link) {
+  window.localStorage.removeItem('user_loged');
+  window.location.href = link;
+}
+
+function check_loged() {
+  let loged = JSON.parse(localStorage.getItem('user_loged'));
+
+  if (loged == null) {
+    document.getElementById('my_dashboard_btn').style.visibility = 'hidden';
+  }
+}
+
+// function delete1 (){
+//   let loged = JSON.parse(localStorage.getItem('users'));
+//   const index = loged.findIndex(item => item.name == "pepe");
+
+//   loged.splice(index, 1);
+//   localStorage.setItem('users', JSON.stringify(loged));
+//   window.localStorage.removeItem('user_loged');
+// }

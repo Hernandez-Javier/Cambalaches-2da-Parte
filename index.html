@@ -21,7 +21,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 
-    <body onload="charge_all_categories(), charge_last_products()">
+    <body onload="check_loged(), charge_all_categories(), charge_last_products()">
         <header>
             <img src="images/icon.png" width="50" height="50" style="margin-right: auto; background-color: var(--color-header);" alt=""/>
             <nav>
@@ -31,7 +31,7 @@
                     <li><a href="login.html">Ingresar</a></li>
                 </ul>
             </nav>
-            <button class="micar_button" onclick="location.href='dashboard.html'"><img src="images/car.png" width="15" height="15" style="background-color:var(--btn-color); float:left" alt=""/>Mi carrito</button>
+            <button id='my_dashboard_btn' class="micar_button" onclick="location.href='dashboard.html'">Mi Dashboard</button>
         </header>
         
         <div class="titulo">
