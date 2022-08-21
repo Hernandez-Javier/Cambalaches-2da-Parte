@@ -18,9 +18,10 @@
                 bottom: 2px;
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 
-    <body>
+    <body onload="edit_category()">
         <header>
             <img src="images/icon.png" width="50" height="50" style="margin-right: auto; background-color: var(--color-header);" alt=""/>
             <nav>
@@ -34,21 +35,21 @@
         </header>
 
         <div>
-            <h1 style="text-align: center; margin-top: 50px; font-weight: bold">Editar Producto</h1>
+            <h1 style="text-align: center; margin-top: 50px; font-weight: bold">Nueva Categoría</h1>
             <div class="line"></div>
+            <p>Ingresa aquí la información de la categoría que deseas incluir en Cambalaches.net</p>
         </div>
 
         <div>
             <div class="div_inputs" style="margin-top: 10px">
-                <input class="input_register" style="align-self: flex-start; margin-left: 447px;" type="text" maxlength="200" value="Tenis usadas por el papa">
-                <textarea class="big_txt" cols="95" rows="10" maxlength="300">Tenis usadas por el papa Juan Pablo Segundo en sus años de secundaria, se puede notar el desgaste por sus santos pies y además de eso están autografiadas por él (se puede ver su firma en la tenis izquierda)</textarea>
-                <input class="direction" type="url" value="https://es.dreamstime.com/foto-tenis-usadas-image4491">
-                <textarea class="big_txt" cols="95" rows="10" placeholder="Busco" maxlength="300">Colección completa de tazos de Ben 10 del 2009</textarea>
+                <input id="name" class="input_register" style="align-self: flex-start; margin-left: 455px;" type="text" maxlength="200" placeholder="Nombre de la categoría">
+                <textarea id="description" class="big_txt" cols="95" rows="10" placeholder="Descripción" maxlength="300"></textarea>
+                <input id="image" class="direction" type="url" placeholder="Link de la imagen">
             </div>
         </div>
 
         <div class="categories" style="margin-bottom: 20px;">
-            <button class="micar_button" onclick="location.href='dashboard.html'">Guardar</button>
+            <button class="micar_button" onclick="new_category();">Guardar</button>
             <button class="micar_button" style="background-color: #c7eef8; color: rgb(3, 3, 3)" onclick="location.href='dashboard.html'">Cancelar</button>
         </div>
         <hr/>
@@ -65,5 +66,6 @@
                 <h4 style="margin-top: 3px;">Cambalaches.net</h4>
             </div>
         </footer>
+        <script src="./app.js" ></script>
     </body>
 </html>

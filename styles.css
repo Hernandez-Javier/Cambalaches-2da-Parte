@@ -152,7 +152,19 @@ button:not(.search_btn):not(.micar_button):hover{
     justify-content: center;
 }
 
+.last_products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .dashboard_items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.dashboard_categories{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -262,6 +274,18 @@ button:not(.search_btn):not(.micar_button):hover{
 .img_style {
     height: 200px;
     width: 200px;
+    alt: "";
+}/*style for images in dashboard*/
+
+.img_categories {
+    height: 150px;
+    width: 150px;
+    alt: "";
+}/*style for images in dashboard*/
+
+.img_index_style {
+    height: 250px;
+    width: 350px;
     alt: "";
 }/*style for images in dashboard*/
 

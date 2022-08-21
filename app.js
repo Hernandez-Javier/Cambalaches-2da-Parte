@@ -1,11 +1,15 @@
 const container = document.querySelector('.categories');
 const container_dash = document.querySelector('.dashboard_items');
+const container_categories = document.querySelector('.dashboard_categries');
 (()=>{
   if (container_dash) {
     container_dash.addEventListener('click', delegate);
   }
   if (container) {
     container.addEventListener('click', delegate);
+  }
+  if (container_categories) {
+    container_categories.addEventListener('click', delegate);
   }
 })();
 
@@ -77,6 +81,69 @@ function login() {
   }
   if (loged == 0){
       alert("Los datos ingresados son incorrectos");
+  }
+}
+
+function new_category() {
+  let categoriesDb = JSON.parse(localStorage.getItem('categories'));
+  let category_edit = JSON.parse(localStorage.getItem('category_edit'));
+
+  if (category_edit != null) {
+    let index = categoriesDb.findIndex(item => item.id == category_edit.id);
+    categoriesDb[index].name = $('#name').val();
+    categoriesDb[index].description = $('#description').val();
+    categoriesDb[index].image = $('#image').val();
+
+    localStorage.setItem('categories', JSON.stringify(categoriesDb));
+    window.localStorage.removeItem('category_edit');
+    window.location.href = './dashboard.html';
+    return false;
+  }
+
+  const Name = $('#name').val();
+  const Description = $('#description').val();
+  const Image = $('#image').val();
+  const Owner = JSON.parse(localStorage.getItem('user_loged')).id;
+
+  //insert to a database
+  if(!categoriesDb) {
+    categoriesDb = [];
+  }
+
+  const category = {
+    name: Name,
+    description: Description,
+    image: Image,
+    owner: Owner,
+    id: categoriesDb.length + 1
+  }
+
+  categoriesDb.push(category);
+  localStorage.setItem('categories', JSON.stringify(categoriesDb));
+  window.location.href = './dashboard.html';
+}
+
+function edit_category() {
+  let category_edit = JSON.parse(localStorage.getItem('category_edit'));
+
+  if (category_edit != null) {
+    document.getElementById('name').value = category_edit.name;
+    document.getElementById('description').textContent = category_edit.description;
+    document.getElementById('image').value = category_edit.image;
+  }
+  
+}
+
+function load_categories(){
+  const categoriesDb = JSON.parse(localStorage.getItem('categories'));
+
+  if(categoriesDb) {
+    let options = "";
+    categoriesDb.forEach((category) => {
+      options += `<option value="${category.id}">${category.name}</option>`;
+    })
+    // renders the select authors-list with the authors found
+    document.getElementById('categories-list').innerHTML = options;
   }
 }
 
@@ -212,6 +279,74 @@ function charge_products() {
       a.classList.add("center_text");
       $('.dashboard_items').prepend(new_li);
     }
+  }
+}
+
+function charge_all_categories() {
+  let loged = JSON.parse(localStorage.getItem('user_loged'));
+  let categoriesDb = JSON.parse(localStorage.getItem('categories'));
+
+  for (let i=0; i<categoriesDb.length; i++) {
+    if (categoriesDb[i].owner == loged.id){
+      let new_li = document.createElement("li");
+      let new_h4 = document.createElement("h4");
+      let img = document.createElement("img");
+      img.src = categoriesDb[i].image;
+      new_h4.textContent = categoriesDb[i].name;
+      new_h4.setAttribute('id', categoriesDb[i].id);
+  
+      new_li.appendChild(img);
+      new_li.appendChild(new_h4);
+      img.classList.add("img_categories");
+      new_h4.classList.add("center_text");
+      $('.categories').prepend(new_li);
+    }
+  }
+}
+
+function charge_categories() {
+  let loged = JSON.parse(localStorage.getItem('user_loged'));
+  let categoriesDb = JSON.parse(localStorage.getItem('categories'));
+
+  for (let i=0; i<categoriesDb.length; i++) {
+    if (categoriesDb[i].owner == loged.id){
+      let new_li = document.createElement("li");
+      let new_h4 = document.createElement("h4");
+      let img = document.createElement("img");
+      let bt = document.createElement("button");
+      img.src = categoriesDb[i].image;
+      bt.textContent = "Editar";
+      new_h4.textContent = categoriesDb[i].name;
+      new_h4.setAttribute('id', categoriesDb[i].id);
+      bt.setAttribute('id', categoriesDb[i].id);
+  
+      new_li.appendChild(img);
+      new_li.appendChild(new_h4);
+      new_li.appendChild(bt);
+      img.classList.add("img_categories");
+      bt.classList.add("edit_button");
+      new_h4.classList.add("center_text");
+      $('.dashboard_categories').prepend(new_li);
+    }
+  }
+}
+
+function charge_last_products() {
+  let productsDb = JSON.parse(localStorage.getItem('products')).reverse();
+
+  for (let i=0; i<2; i++) {
+    let new_li = document.createElement("li");
+    let img = document.createElement("img");
+    let a = document.createElement("h4");
+    img.src = productsDb[i].image;
+    a.textContent = productsDb[i].name;
+    a.setAttribute('id', productsDb[i].id);
+
+    new_li.appendChild(img);
+    new_li.appendChild(a);
+    img.classList.add("img_index_style");
+    a.classList.add("pro_index");
+    $('.last_products').prepend(new_li);
   }
 }
 

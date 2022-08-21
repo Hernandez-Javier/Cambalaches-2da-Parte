@@ -18,9 +18,10 @@
                 bottom: 2px;
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 
-    <body>
+    <body onload="charge_all_categories(), charge_last_products()">
         <header>
             <img src="images/icon.png" width="50" height="50" style="margin-right: auto; background-color: var(--color-header);" alt=""/>
             <nav>
@@ -43,41 +44,15 @@
         <div style="margin-top: 50px; margin-bottom: 50px;">
             <h2 style="text-align: center; font-weight: bold;">Categorías</h2><br/>
             <p style="text-align: center; margin-bottom: 50px;">Quizás encuentras algo que te guste</p>
-            <ul class="categories">
-                <li>
-                    <img src="images/electr.jpg" width="150" height="150" alt=""/>
-                    <h4>Electrodomesticos</h4>
-                </li>
-                <li>
-                    <img src="images/vehiculo.jpg" width="150" height="150" alt=""/>
-                    <h4>Vehículos</h4>
-                </li>
-                <li>
-                    <img src="images/entretenimiento.jpg" width="150" height="150" alt=""/>
-                    <h4>Entretenimiento</h4>
-                </li>
-                <li>
-                    <img src="images/consolas.jpg" width="150" height="150" alt=""/>
-                    <h4>Consolas</h4>
-                </li>
-                <li>
-                    <img src="images/mueble.jpg" width="150" height="150" alt=""/>
-                    <h4>Hogar</h4>
-                </li>
+            <ul class="categories" onload="charge_all_categories()">
+                
             </ul>
         </div>
 
         <div class="ult_camb">
             <h2 style="text-align: center; font-weight: bold;">Cambalaches Recientes</h2><br/>
-            <ul class="categories">
-                <li>
-                    <img src="images/camba1.jpg" width="350" height="250" alt=""/>
-                    <a class="pro_index" href="products.html"><h4 style="color: #c95555">PS4 usado por Maradona</h4></a>
-                </li>
-                <li>
-                    <img src="images/camba2.jpg" width="350" height="250" alt=""/>
-                    <a class="pro_index" href="products.html"><h4 style="color: #c95555">TV para ver tele</h4></a>
-                </li>
+            <ul class="last_products">
+                
             </ul>
         </div>
         <hr/>
@@ -94,5 +69,6 @@
                 <h4 style="margin-top: 3px;">Cambalaches.net</h4>
             </div>
         </footer>
+        <script src="./app.js" ></script>
     </body>
 </html>
