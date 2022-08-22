@@ -3,6 +3,7 @@ const container_dash = document.querySelector('.dashboard_items');//products in 
 const container_categories = document.querySelector('.dashboard_categories');//categories in dashboard
 const container_categories_index = document.querySelector('.categories_index');//categories in index
 const container_last_products = document.querySelector('.last_products');//last products in index
+
 (()=>{
   if (container_dash) {
     container_dash.addEventListener('click', delegate);
@@ -25,7 +26,7 @@ function delegate(e) {
   let productsDb = JSON.parse(localStorage.getItem('products'));
   let categories = JSON.parse(localStorage.getItem('categories'));
   e.preventDefault();
-  console.log('ygyggygggygygyg');
+
   if (e.target.classList[0] == 'edit_button') {
     localStorage.setItem('product_edit', JSON.stringify(productsDb.find(item => item.id == e.target.id)));
     window.location.href = './new_product.html';
@@ -251,7 +252,7 @@ function charge_all_products() {
   let usersDb = JSON.parse(localStorage.getItem('users'));
   let cat = JSON.parse(localStorage.getItem('category_used'));
 
-  if (cat != null) {
+  if (cat != null) {//to charge products by category
     for (let i=0; i<productsDb.length; i++) {
       if (productsDb[i].category == cat) {
         let new_li = document.createElement("li");

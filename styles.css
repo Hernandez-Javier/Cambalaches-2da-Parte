@@ -173,6 +173,7 @@ button:not(.search_btn):not(.micar_button):hover{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    list-style-type: none
 }
 
 .dashboard_categories{
@@ -306,4 +307,8 @@ button:not(.search_btn):not(.micar_button):hover{
 
 .center_text_cat {
     text-align: center;
+}
+
+::marker {
+    visibility: hidden;
 }
